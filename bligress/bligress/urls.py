@@ -9,6 +9,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
+     url(r'^kanban/', include('kanban.urls')),
     # url(r'^$', 'bligress.views.home', name='home'),
     # url(r'^bligress/', include('bligress.foo.urls')),
 

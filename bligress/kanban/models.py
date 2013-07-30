@@ -9,6 +9,15 @@ class Task(models.Model):
     hours = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     owner = models.ForeignKey(User)
     group = models.ManyToManyField(User, related_name='u+', null=True, blank=True)
+    phase = models.ForeignKey('Phase', null=False, default=0)
+    PRIORITIES = (
+        ("LO", "Low"),
+        ("NO", "Normal"),
+        ("HI", "High"),
+        ("AS", "ASAP"),
+    )
+    priority = models.CharField(max_length=2, choices=PRIORITIES, default="NO")
+    queue_number = models.IntegerField(default=0)
 
     def __unicode__(self):
         return self.title
@@ -22,7 +31,6 @@ class Phase(models.Model):
         return self.name
 
 class Board(models.Model):
-    priority = models.IntegerField()
     task = models.ForeignKey('Task')
     phase = models.ForeignKey('Phase')
 
