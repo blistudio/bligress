@@ -4,23 +4,37 @@ div.boardtask {
 	margin: 0.25em;
 }
 
-div.boardtask a {
+a {
 	text-decoration: none;	
 	color: black;
 }
 
-div.boardtask a:hover {
+a:hover {
 	background-color: #eee;
 	/*
 	text-decoration: underline;
 	*/
 }
 
-span.boardforward {
+a.boardforward  {
 	float: right;
-	background-color: #ccc;
+	border: 1px solid black;
 	padding: 0.25em;
+	margin-left: 0.5em;
+	margin-top: -0.25em;
 }
 
-span.boardforward a:hover {
+a:hover .boardforward {
+	background-color: #ccc;
+}
+
+div.boardcontrols {
+	padding: 1.25em;
+	background-color: #ccc;
+}
+
+div.boardcontrols a.boardcontrol {
+	border: 1px dashed black;
+	padding: 0.25em;
+	margin-right: 0.5em;
 }
