@@ -1,3 +1,7 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'task.css' %}" />
+
 {% if task %}
 	<div class="task">
 	<h2 class="tasktitle">{{ task.title }}</h2>
@@ -6,7 +10,9 @@
 
 	<div class="owner">Owner: {{ task.owner.get_full_name }}</div>
 
-	<pre class="taskdesc">Desc: {{ task.description }}</pre>
+	<div class="taskdesc">Desc:
+	<pre class="taskdescdata">{{ task.description }}</pre>
+	</div>
 
 	<div class="tasktime">Time: {{ task.hours }} h</div>
 
