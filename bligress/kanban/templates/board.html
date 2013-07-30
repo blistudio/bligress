@@ -1,0 +1,18 @@
+<div class="board">
+	<h2 class="boardname">{{ board.name }}</h2>
+
+	<div class="boardstarted">Started: {{ board.start_date }}</div>
+
+	{% for column in board.phases.all %}
+	<div class="boardcolumn">
+		<p>{{ column.name }}</p>
+		<div class="boardtasks">
+		{% for task in board.task.all %}
+		{% if task.phase == column %}
+			<div class="boardtask">{{ task.title }}</div>
+		{% endif %}
+		{% endfor %}
+		</div>
+	</div>
+	{% endfor %}
+</div>

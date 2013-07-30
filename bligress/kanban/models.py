@@ -22,6 +22,12 @@ class Task(models.Model):
     def __unicode__(self):
         return self.title
 
+    def get_priority(self):
+        for p in self.PRIORITIES:
+            if p[0] == self.priority:
+                return p[1]
+        return self.priority
+
 class Phase(models.Model):
     name = models.CharField(max_length=256)
     size = models.IntegerField()
@@ -31,8 +37,13 @@ class Phase(models.Model):
         return self.name
 
 class Board(models.Model):
-    task = models.ForeignKey('Task')
-    phase = models.ForeignKey('Phase')
+    name = models.CharField(max_length=256)
+    start_date = models.DateTimeField('start date')
+    task = models.ManyToManyField('Task', related_name='task+', null=True, blank=True)
+    phases = models.ManyToManyField('Phase', related_name='phase+', null=True, blank=True)
+
+    def __unicode__(self):
+        return self.name
 
 class PhaseStatistics(models.Model):
     board = models.ForeignKey('Board')
@@ -40,10 +51,6 @@ class PhaseStatistics(models.Model):
     num_items = models.IntegerField()
     entry_avg = models.FloatField()
     leave_avg = models.FloatField()
-
-class Sprint(models.Model):
-    board = models.ForeignKey('Board')
-    task = models.ForeignKey('Task')
 
 class Statistics(models.Model):
     round_time = models.FloatField()
