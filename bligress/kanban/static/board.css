@@ -16,16 +16,22 @@ a:hover {
 	*/
 }
 
-a.boardforward  {
+.boardtaskblock  {
 	float: right;
+}
+
+a.boardtaskforward  {
+	margin-top: -0.25em;
+	margin-left: 0.5em;
 	border: 1px solid black;
 	padding: 0.25em;
-	margin-left: 0.5em;
-	margin-top: -0.25em;
 }
 
 a:hover .boardforward {
 	background-color: #ccc;
+}
+
+div.boardtask {
 }
 
 div.boardcontrols {
@@ -37,4 +43,25 @@ div.boardcontrols a.boardcontrol {
 	border: 1px dashed black;
 	padding: 0.25em;
 	margin-right: 0.5em;
+}
+
+div.boardcolumn {
+	min-width: 14em;
+	float: left;
+	border-left: 2px solid black;
+	margin-left: 1em;
+	min-height: 50%;
+}
+
+h3 {
+	padding-left: 1em;
+	padding-bottom: 0.5em;
+	border-bottom: 2px solid black;
+	/*
+	border-left: 2px solid black;
+	*/
+}
+
+.floatstop {
+	clear:both;
 }
