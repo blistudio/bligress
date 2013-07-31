@@ -1,0 +1,14 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'task.css' %}" />
+
+<form action={% url 'kanban:taskcreate' %} method="post">
+	<h2>New task</h2>
+	<table>
+	{{form}}
+	</table>
+<div>
+	<input type="submit" value="Create task"></input>
+</div>
+
+</form>

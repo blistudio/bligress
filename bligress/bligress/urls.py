@@ -1,15 +1,12 @@
 from django.conf.urls import patterns, include, url
 
+# Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
-
 urlpatterns = patterns('',
     # Examples:
-     url(r'^kanban/', include('kanban.urls')),
+     url(r'^kanban/', include('kanban.urls', namespace="kanban")),
     # url(r'^$', 'bligress.views.home', name='home'),
     # url(r'^bligress/', include('bligress.foo.urls')),
 
