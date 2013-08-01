@@ -4,3 +4,8 @@ div.taskdesc {
 	margin-bottom: 1em;
 	margin-top: 1em;
 }
+
+div.taskdescdata {
+	font-family: "Courier New", monospace;
+	white-space: pre-wrap;
+}

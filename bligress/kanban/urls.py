@@ -8,7 +8,8 @@ urlpatterns = patterns('',
     url(r'^taskback/(?P<board_id>\d+)/(?P<task_id>\d+)/$', views.taskback, name='taskback'),
     url(r'^tasknew/(?P<board_id>\d+)/$', views.tasknew, name='tasknew'),
     url(r'^taskforw/(?P<board_id>\d+)/(?P<task_id>\d+)/$', views.taskforw, name='taskforw'),
-    url(r'^taskcreate/$', views.taskcreate, name='taskcreate'),
+    url(r'^taskcreate/(?P<board_id>\d+)/$', views.taskcreate, name='taskcreate'),
     url(r'^board/(?P<board_id>\d+)/$', views.boardshow, name='boardshow'),
-    url(r'^boardnew/$', views.boardnew, name='boardnew')
+    url(r'^boardnew/$', views.boardnew, name='boardnew'),
+    url(r'^boardcreate/$', views.boardcreate, name='boardcreate'),
 )

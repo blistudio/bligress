@@ -65,3 +65,9 @@ h3 {
 .floatstop {
 	clear:both;
 }
+
+div.error {
+	background-color: red;
+	color: white;
+	font-weight: bold;
+}
