@@ -71,3 +71,9 @@ div.error {
 	color: white;
 	font-weight: bold;
 }
+
+.board_selection {
+	padding: 0.75em;
+	border: 1px dotted black;
+	margin: 0.25em;
+}

@@ -13,7 +13,8 @@ from django.forms import ModelForm
 from django.contrib.auth.models import User
 
 def index(request):
-    return HttpResponse("Heippa.")
+    boards = Board.objects.all()
+    return render(request, 'index.html', {'boards': boards})
 
 def taskshow(request, task_id):
     try:

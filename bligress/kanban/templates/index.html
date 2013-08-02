@@ -1,0 +1,13 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'board.css' %}" />
+
+<div class="boardcontrols">
+	<a class="boardcontrol" href={% url 'kanban:boardnew' %}>New board</a>
+</div>
+
+<div class="boards">
+	{% for board in boards %}
+	<div class="board_selection"><a href={% url 'kanban:boardshow' board.id %}>{{ board.name }}</a></div>
+	{% endfor %}
+</div>
