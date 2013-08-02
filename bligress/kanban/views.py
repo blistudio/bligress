@@ -50,7 +50,6 @@ def taskcreate(request, board_id):
     if not form.is_valid():
         raise Http404
 
-    print "poordi_id:", board_id
     try:
         board = Board.objects.get(pk=board_id)
     except:
@@ -69,7 +68,8 @@ def taskcreate(request, board_id):
     board.save()
     board.task.add(obj)
 
-    return redirect('/kanban/board/%s' % (board_id))
+    #return redirect('/kanban/board/%s' % (board_id))
+    return redirect('kanban:boardshow', board_id)
 
 def taskforw(request, board_id, task_id):
     try:
@@ -94,7 +94,7 @@ def taskforw(request, board_id, task_id):
         task.phase = nextphase
         task.save()
 
-    return redirect('/kanban/board/%s' % (board_id))
+    return redirect('kanban:boardshow', board_id)
 
 def taskback(request, board_id, task_id):
     try:
@@ -118,8 +118,7 @@ def taskback(request, board_id, task_id):
         task.phase = prevphase
         task.save()
 
-    return redirect('/kanban/board/%s' % (board_id))
-
+    return redirect('kanban:boardshow', board_id)
 
 def boardshow(request, board_id):
     try:
@@ -161,4 +160,4 @@ def boardcreate(request):
         return render(request, 'boardnew.html', {'form': form, 'errormsg': 'Please select at least one phase'} )
     board_id = obj.id
 
-    return redirect('/kanban/board/%s' % (board_id))
+    return redirect('kanban:boardshow', board_id)
