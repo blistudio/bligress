@@ -12,10 +12,14 @@ from django.forms import ModelForm
 
 from django.contrib.auth.models import User
 
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def index(request):
     boards = Board.objects.all()
     return render(request, 'index.html', {'boards': boards})
 
+@login_required
 def taskshow(request, task_id):
     try:
         task = Task.objects.get(pk=task_id)
@@ -35,6 +39,7 @@ class TaskNewForm(ModelForm):
         self.fields['start_date'].widget.format = '%m/%d/%Y'
         self.fields['start_date'].widget.attrs.update({'class':'datePicker', 'readonly':'true'})
 
+@login_required
 def tasknew(request, board_id):
     try:
         board = Board.objects.get(pk=board_id)
@@ -43,6 +48,7 @@ def tasknew(request, board_id):
     cf = TaskNewForm()
     return render(request, 'newtask.html', {'board_id': board_id, 'form': cf})
 
+@login_required
 def taskcreate(request, board_id):
     if request.method != 'POST':
         raise Http404
@@ -72,6 +78,7 @@ def taskcreate(request, board_id):
     #return redirect('/kanban/board/%s' % (board_id))
     return redirect('kanban:boardshow', board_id)
 
+@login_required
 def taskforw(request, board_id, task_id):
     try:
         board = Board.objects.get(pk=board_id)
@@ -97,6 +104,7 @@ def taskforw(request, board_id, task_id):
 
     return redirect('kanban:boardshow', board_id)
 
+@login_required
 def taskback(request, board_id, task_id):
     try:
         board = Board.objects.get(pk=board_id)
@@ -121,6 +129,7 @@ def taskback(request, board_id, task_id):
 
     return redirect('kanban:boardshow', board_id)
 
+@login_required
 def boardshow(request, board_id):
     try:
         board = Board.objects.get(pk=board_id)
@@ -141,10 +150,12 @@ class BoardNewForm(ModelForm):
         self.fields['start_date'].widget.format = '%m/%d/%Y'
         self.fields['start_date'].widget.attrs.update({'class':'datePicker', 'readonly':'true'})
 
+@login_required
 def boardnew(request):
     cf = BoardNewForm()
     return render(request, 'boardnew.html', {'form': cf})
 
+@login_required
 def boardcreate(request):
     if request.method != 'POST':
         raise Http404
