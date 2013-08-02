@@ -11,5 +11,5 @@ urlpatterns = patterns('',
      url(r'^login/$', views.loginview, name='login'),
      url(r'^logout/$', views.logoutview, name='logout'),
      url(r'^kanban/', include('kanban.urls', namespace="kanban")),
-     url(r'^kanbanadmin/', include(admin.site.urls)),
+     url(r'^admin/', include(admin.site.urls)),
 )
