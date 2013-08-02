@@ -75,7 +75,6 @@ def taskcreate(request, board_id):
     board.save()
     board.task.add(obj)
 
-    #return redirect('/kanban/board/%s' % (board_id))
     return redirect('kanban:boardshow', board_id)
 
 @login_required
@@ -141,12 +140,10 @@ def boardshow(request, board_id):
 class BoardNewForm(ModelForm):
     class Meta:
         model = Board
-        #exclude = ["done_date", "queue_number", "owner", "group"]
         exclude = ["task"]
 
     def __init__(self, *args, **kwargs):
         super(BoardNewForm, self).__init__(*args, **kwargs)
-        #self.fields['start_date'].widget = widgets.AdminDateWidget()
         self.fields['start_date'].widget.format = '%m/%d/%Y'
         self.fields['start_date'].widget.attrs.update({'class':'datePicker', 'readonly':'true'})
 

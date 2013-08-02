@@ -2,3 +2,5 @@ Bligress is a Kanban tool for following process and marking hours.
 
 pip install Django==1.5.1
 pip install South
+
+Contains jQuery and jQuery UI code.
