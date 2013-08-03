@@ -14,6 +14,7 @@ Dependencies
 To install basic dependencies:
 
 > pip install Django==1.5.1
+> 
 > pip install South
 
 
