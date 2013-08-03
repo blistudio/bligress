@@ -1,0 +1,34 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'board.css' %}" />
+
+<div class="boardcontrols">
+	<a class="boardcontrol" href={% url 'kanban:boardnew' %}>New board</a>
+	<a class="boardcontrol" href={% url 'kanban:tasknew' board.id %}>New task</a>
+	<a class="boardcontrol" href={% url 'logout' %}>Logout</a>
+</div>
+
+<div class="board">
+	<h2 class="boardname">{{ board.name }}</h2>
+
+	<div class="boardstarted">Started: {{ board.start_date }}</div>
+
+	{% for column in board.phases.all %}
+	<div class="boardcolumn">
+		<h3 class="boardphase">{{ column.name }}</h3>
+		<div class="boardtasks">
+		{% for task in board.task.all %}{% if task.phase == column %}
+			<div class="boardtask" onclick="javascript: document.location='{% url 'kanban:taskshow' task.id %}'">
+			<span class="boardtaskname">{{ task.title }}</span>
+			<span class="boardtaskblock">
+			<a class="boardtaskforward" href={% url 'kanban:taskback' board.id task.id %}>&lt;&lt;</a>
+			<a class="boardtaskforward" href={% url 'kanban:taskforw' board.id task.id %}>&gt;&gt;</a>
+			</span>
+			</div>
+		{% endif %}{% endfor %}
+		</div>
+	</div>
+	{% endfor %}
+	<div class="floatstop">
+	</div>
+</div>
