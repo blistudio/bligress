@@ -23,4 +23,4 @@ Copyright
 Copyright (c)2013 Blistud:io
 http://blistud.io
 
-Licenced under 3-cLause BSD licence.
+Licenced under 3-Clause BSD licence.
