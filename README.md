@@ -11,10 +11,17 @@ Developed for needs of Blistud:io.
 Dependencies
 ------------
 
-pip install Django==1.5.1
-pip install South
+To install basic dependencies:
 
-Contains jQuery and jQuery UI code.
+> pip install Django==1.5.1
+> pip install South
+
+
+Distribution already contains jQuery and jQuery UI code.
+
+After changing settings.py the minimal WSGI server can be run with:
+
+> ./manage.py runserver
 
 
 Copyright
