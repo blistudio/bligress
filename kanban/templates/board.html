@@ -3,6 +3,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'board.css' %}" />
 
 <div class="boardcontrols">
+	<a class="boardcontrol" href={% url 'index' %}>List boards</a>
 	<a class="boardcontrol" href={% url 'kanban:boardnew' %}>New board</a>
 	<a class="boardcontrol" href={% url 'kanban:tasknew' board.id %}>New task</a>
 	<a class="boardcontrol" href={% url 'logout' %}>Logout</a>
