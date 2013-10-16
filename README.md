@@ -25,6 +25,15 @@ After changing settings.py the minimal WSGI server can be run with:
 > ./manage.py runserver
 
 
+Static files
+-------------
+
+To install static files:
+
+> ./manage.py collectstatic
+
+Target location is defined in settings.
+
 Copyright
 ---------
 

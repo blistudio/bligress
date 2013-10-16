@@ -6,7 +6,8 @@
 
 {% if task %}
 	<div class="task">
-	<h2 class="tasktitle">{{ task.title }}</h2>
+	<h2 class="tasktitle">{{ task.title }}
+        </h2>
 
 	<div class="phase">Phase: {{ task.phase }}</div>
 
@@ -23,6 +24,11 @@
 	<div class="tasksprio">Priority: {{ task.get_priority }}</div>
 
 	</div>
+	<div class="toolbox">
+            <a href="{% url 'kanban:taskedit' board_id task.id %}">Edit</a>
+            | <a href="{% url 'kanban:boardshow' board_id %}">Board</a>
+	</div>
+
 {% else %}
 	Ei ole.
 {% endif %}

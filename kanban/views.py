@@ -20,13 +20,35 @@ def index(request):
     return render(request, 'index.html', {'boards': boards})
 
 @login_required
-def taskshow(request, task_id):
+def taskshow(request, board_id, task_id):
     try:
         task = Task.objects.get(pk=task_id)
     except:
         raise Http404
 
-    return render(request, 'task.html', {'task': task})
+    return render(request, 'task.html', {'board_id': board_id, 'task': task})
+
+@login_required
+def taskedit(request, board_id, task_id):
+    try:
+        task = Task.objects.get(pk=task_id)
+    except:
+        raise Http404
+
+    if request.method == 'POST':
+        try:
+            board = Board.objects.get(pk=board_id)
+        except:
+            raise Http404
+        form = TaskNewForm(data=request.POST, instance=task)
+        if not form.is_valid():
+            return render(request, 'taskedit.html', {'board_id': board_id, 'task': task, 'form': form})
+        form.save()
+
+        return redirect('kanban:taskshow', board_id, task_id)
+
+    cf = TaskNewForm(instance=task)
+    return render(request, 'taskedit.html', {'board_id': board_id, 'task': task, 'form': cf})
 
 
 class TaskNewForm(ModelForm):
@@ -55,7 +77,7 @@ def taskcreate(request, board_id):
 
     form = TaskNewForm(data = request.POST)
     if not form.is_valid():
-        raise Http404
+        return render(request, 'newtask.html', {'board_id': board_id, 'form': form})
 
     try:
         board = Board.objects.get(pk=board_id)
@@ -159,7 +181,7 @@ def boardcreate(request):
 
     form = BoardNewForm(data=request.POST)
     if not form.is_valid():
-        raise Http404
+        return render(request, 'boardnew.html', {'form': form})
 
     obj = form.save(commit = False)
     obj.save()

@@ -19,7 +19,7 @@
 		<h3 class="boardphase">{{ column.name }}</h3>
 		<div class="boardtasks">
 		{% for task in board.task.all %}{% if task.phase == column %}
-			<div class="boardtask" onclick="javascript: document.location='{% url 'kanban:taskshow' task.id %}'">
+			<div class="boardtask" onclick="javascript: document.location='{% url 'kanban:taskshow' board.id task.id %}'">
 			<span class="boardtaskname">{{ task.title }}</span>
 			<span class="boardtaskblock">
 			<a class="boardtaskforward" href={% url 'kanban:taskback' board.id task.id %}>&lt;&lt;</a>
