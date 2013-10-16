@@ -1,0 +1,21 @@
+a {
+	text-decoration: none;	
+	color: black;
+}
+
+a:hover {
+	background-color: #eee;
+	/*
+	text-decoration: underline;
+	*/
+}
+
+div.toolbox {
+	margin-top: 1em;
+	border: 1px dotted black;
+	padding: 1em;
+}
+
+.errorlist {
+	background-color: red;
+}

@@ -1,15 +1,16 @@
 {% load staticfiles %}
 
 <head>
-	<link rel="stylesheet" type="text/css" href="{% static 'task.css' %}" />
-	<link rel="stylesheet" href="{% static 'jquery/ui.css' %}" />
-	<script src="{% static 'jquery/jquery.js' %}"></script>
-	<script src="{% static 'jquery/jquery-ui.js' %}"></script>
-	<script>
-	$(function() {
-		$( "#id_start_date" ).datepicker();
-	});
-	</script>
+    <link rel="stylesheet" type="text/css" href="{% static 'kanban.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'task.css' %}" />
+    <link rel="stylesheet" href="{% static 'jquery/ui.css' %}" />
+    <script src="{% static 'jquery/jquery.js' %}"></script>
+    <script src="{% static 'jquery/jquery-ui.js' %}"></script>
+    <script>
+    $(function() {
+            $( "#id_start_date" ).datepicker();
+    });
+    </script>
 </head>
 
 
@@ -19,8 +20,9 @@
 	<table>
 	{{ form }}
 	</table>
-<div>
+<div class="toolbox">
 	<input type="submit" value="Create task"></input>
+        | <a href="{% url 'kanban:boardshow' board_id %}">Board</a>
 </div>
 
 </form>

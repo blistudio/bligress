@@ -4,18 +4,6 @@
 	margin: 0.25em;
 }
 
-a {
-	text-decoration: none;	
-	color: black;
-}
-
-a:hover {
-	background-color: #eee;
-	/*
-	text-decoration: underline;
-	*/
-}
-
 .boardtaskblock  {
 	float: right;
 }
@@ -76,8 +64,4 @@ div.error {
 	padding: 0.75em;
 	border: 1px dotted black;
 	margin: 0.25em;
-}
-
-.errorlist {
-	background-color: red;
 }

@@ -9,13 +9,3 @@ div.taskdescdata {
 	font-family: "Courier New", monospace;
 	white-space: pre-wrap;
 }
-
-div.toolbox {
-	margin-top: 1em;
-	border: 1px dotted black;
-	padding: 1em;
-}
-
-.errorlist {
-	background-color: red;
-}
