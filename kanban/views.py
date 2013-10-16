@@ -29,6 +29,18 @@ def taskshow(request, board_id, task_id):
     return render(request, 'task.html', {'board_id': board_id, 'task': task})
 
 @login_required
+def taskclose(request, board_id, task_id):
+    try:
+        task = Task.objects.get(pk=task_id)
+    except:
+        raise Http404
+
+    task.queue_number = -1
+    task.save()
+
+    return redirect('kanban:boardshow', board_id)
+
+@login_required
 def taskedit(request, board_id, task_id):
     try:
         task = Task.objects.get(pk=task_id)

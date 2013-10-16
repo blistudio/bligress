@@ -19,7 +19,9 @@
 	<div class="boardcolumn">
 		<h3 class="boardphase">{{ column.name }}</h3>
 		<div class="boardtasks">
-		{% for task in board.task.all %}{% if task.phase == column %}
+                {% for task in board.task.all %}
+                    {% if task.phase == column %}
+                    {% if task.queue_number >= 0 %}
 			<div class="boardtask" onclick="javascript: document.location='{% url 'kanban:taskshow' board.id task.id %}'">
 			<span class="boardtaskname">{{ task.title }}</span>
 			<span class="boardtaskblock">
@@ -27,7 +29,9 @@
 			<a class="boardtaskforward" href={% url 'kanban:taskforw' board.id task.id %}>&gt;&gt;</a>
 			</span>
 			</div>
-		{% endif %}{% endfor %}
+                    {% endif %}
+                    {% endif %}
+                {% endfor %}
 		</div>
 	</div>
 	{% endfor %}
