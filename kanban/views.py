@@ -80,7 +80,7 @@ def tasknew(request, board_id):
     except:
         raise Http404
     cf = TaskNewForm()
-    return render(request, 'newtask.html', {'board_id': board_id, 'form': cf})
+    return render(request, 'tasknew.html', {'board_id': board_id, 'form': cf})
 
 @login_required
 def taskcreate(request, board_id):
@@ -89,7 +89,7 @@ def taskcreate(request, board_id):
 
     form = TaskNewForm(data = request.POST)
     if not form.is_valid():
-        return render(request, 'newtask.html', {'board_id': board_id, 'form': form})
+        return render(request, 'tasknew.html', {'board_id': board_id, 'form': form})
 
     try:
         board = Board.objects.get(pk=board_id)
