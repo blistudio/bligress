@@ -4,13 +4,26 @@
 	margin: 0.25em;
 }
 
+.boardtaskname  {
+	margin-left: -0.5em;
+	float: left;
+	max-width: 65%;
+}
+
 .boardtaskblock  {
 	float: right;
 }
 
 a.boardtaskforward  {
 	margin-top: -0.25em;
-	margin-left: 0.5em;
+	margin-left: 0.25em;
+	margin-right: -0.25em;
+	border: 1px solid black;
+	padding: 0.25em;
+}
+a.boardtaskback  {
+	margin-top: -0.25em;
+	margin-left: 0.25em;
 	border: 1px solid black;
 	padding: 0.25em;
 }
