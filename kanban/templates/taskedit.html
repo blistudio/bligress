@@ -16,7 +16,7 @@
 
 <form action={% url 'kanban:taskedit' board_id task.id %} method="post">
 	{% csrf_token %}
-	<h2>Edit task</h2>
+	<h2>Edit task: <a href="{% url 'kanban:taskshow' board_id task.id %}">TASK-{{ task.id }}</a></h2>
 	<table>
 	{{ form }}
 	</table>

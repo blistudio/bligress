@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load taskboard %}
 
 <head>
 	<link rel="stylesheet" type="text/css" href="{% static 'kanban.css' %}" />
@@ -7,7 +8,7 @@
 
 {% if task %}
     <div class="task">
-    <h2 class="tasktitle">{{ task.title }}
+    <h2 class="tasktitle"><a href="{% url 'kanban:taskshow' board_id task.id %}">TASK-{{ task.id }}</a>: {{ task.title }}
     </h2>
 
     <div class="phase">Phase: {{ task.phase }}</div>
@@ -15,7 +16,7 @@
     <div class="owner">Owner: {{ task.owner.get_full_name }}</div>
 
     <div class="taskdesc">Desc:
-    <div class="taskdescdata">{{ task.description }}</div>
+    <div class="taskdescdata">{{ task.description | itemsurl:board_id }}</div>
     </div>
 
     <div class="tasktime">Time: {{ task.hours }} h</div>

@@ -11,7 +11,7 @@
 </div>
 
 <div class="board">
-    <h2 class="boardname">{{ board.name }}</h2>
+    <h2 class="boardname"><a href="{% url 'kanban:boardshow' board.id %}">BOARD-{{ board.id }}</a>: {{ board.name }}</h2>
 
     <div class="boardstarted">Started: {{ board.start_date }}</div>
 
