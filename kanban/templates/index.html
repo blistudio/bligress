@@ -10,6 +10,6 @@
 
 <div class="boards">
 	{% for board in boards %}
-	<div class="board_selection"><a href={% url 'kanban:boardshow' board.id %}>{{ board.name }}</a></div>
+        <div class="board_selection"><a href={% url 'kanban:boardshow' board.id %}>BOARD-{{ board.id }}: {{ board.name }}</a></div>
 	{% endfor %}
 </div>
